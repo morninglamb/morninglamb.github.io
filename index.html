@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morning Lamb</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Grotesk:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      color: #e2e2e2;
+      min-height: 100vh;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .canvas {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* ── Scattered title words ───────────────────────── */
+    .word {
+      position: absolute;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .word.w-hello {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      color: #e8e8e8;
+      top: 14%;
+      left: 8%;
+      transform: rotate(-3deg);
+      text-shadow: 0 0 40px rgba(255,255,255,0.06);
+    }
+
+    .word.w-im {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3vw, 2.4rem);
+      color: #888;
+      top: 32%;
+      left: 52%;
+      transform: rotate(1.5deg);
+    }
+
+    .word.w-morning {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: clamp(3.2rem, 8vw, 7.5rem);
+      color: #fff;
+      top: 44%;
+      left: 18%;
+      transform: rotate(-1deg);
+      text-shadow:
+        0 0 50px rgba(255,255,255,0.08),
+        0 0 100px rgba(255,255,255,0.04);
+    }
+
+    .word.w-lamb {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(3rem, 7.5vw, 7rem);
+      color: #d0d0d0;
+      top: 62%;
+      left: 55%;
+      transform: rotate(2deg);
+      text-shadow: 0 0 60px rgba(255,255,255,0.05);
+    }
+
+    /* ── Nav links (scattered, small, no outline) ──── */
+    .nav-word {
+      position: absolute;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+      letter-spacing: 0.08em;
+      color: #555;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.3rem 0.1rem;
+      transition: color 0.4s ease, text-shadow 0.4s ease;
+      white-space: nowrap;
+    }
+
+    .nav-word:hover {
+      color: #ccc;
+      text-shadow: 0 0 20px rgba(255,255,255,0.12);
+    }
+
+    .nav-sound {
+      top: 26%;
+      right: 12%;
+      transform: rotate(-2deg);
+    }
+
+    .nav-visual {
+      bottom: 22%;
+      left: 7%;
+      transform: rotate(3deg);
+    }
+
+    .nav-misc {
+      bottom: 12%;
+      right: 28%;
+      transform: rotate(-1.5deg);
+    }
+
+    /* ── Subtle ambient drift ────────────────────────── */
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50%      { transform: translate(var(--dx), var(--dy)); }
+    }
+
+    .word, .nav-word {
+      animation: drift var(--dur) ease-in-out infinite;
+    }
+
+    .w-hello   { --dx: 4px;  --dy: -3px; --dur: 18s; }
+    .w-im      { --dx: -3px; --dy: 5px;  --dur: 22s; }
+    .w-morning { --dx: 5px;  --dy: 2px;  --dur: 20s; }
+    .w-lamb    { --dx: -4px; --dy: -4px; --dur: 24s; }
+
+    .nav-sound  { --dx: -2px; --dy: 3px;  --dur: 26s; }
+    .nav-visual { --dx: 3px;  --dy: -2px; --dur: 23s; }
+    .nav-misc   { --dx: -3px; --dy: 2px;  --dur: 28s; }
+
+    /* ── Mobile adjustments ──────────────────────────── */
+    @media (max-width: 640px) {
+      .word.w-hello   { top: 10%; left: 6%; }
+      .word.w-im      { top: 24%; left: 42%; }
+      .word.w-morning { top: 36%; left: 5%; }
+      .word.w-lamb    { top: 54%; left: 30%; }
+
+      .nav-sound  { top: 73%; right: auto; left: 10%; }
+      .nav-visual { bottom: auto; top: 78%; left: 60%; }
+      .nav-misc   { bottom: 10%; right: auto; left: 25%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="canvas">
+
+    <!-- Title words, scattered -->
+    <span class="word w-hello">Hello,</span>
+    <span class="word w-im">I'm</span>
+    <span class="word w-morning">Morning</span>
+    <span class="word w-lamb">Lamb</span>
+
+    <!-- Nav links, scattered and small -->
+    <a href="sound.html" class="nav-word nav-sound">sound</a>
+    <a href="visual.html" class="nav-word nav-visual">visual</a>
+    <a href="misc.html" class="nav-word nav-misc">misc and more</a>
+
+  </div>
+
+</body>
+</html>
