@@ -71,7 +71,7 @@
 
     .word.w-morning {
       font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
+      font-weight: 200;
       font-size: clamp(3.2rem, 8vw, 7.5rem);
       color: #fff;
       top: 44%;
@@ -84,7 +84,7 @@
 
     .word.w-lamb {
       font-family: 'Space Grotesk', sans-serif;
-      font-weight: 400;
+      font-weight: 200;
       font-size: clamp(3rem, 7.5vw, 7rem);
       color: #d0d0d0;
       top: 62%;
@@ -135,15 +135,12 @@
       transform: rotate(-1.5deg);
     }
 
+    /* ── Subtle ambient drift ────────────────────────── */
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50%      { transform: translate(var(--dx), var(--dy)); }
+    }
 
-.top-photo {
-  position: absolute;
-  top: 4%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 160px;
-  height: auto;
-}
     .word, .nav-word {
       animation: drift var(--dur) ease-in-out infinite;
     }
