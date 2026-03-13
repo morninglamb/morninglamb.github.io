@@ -9,22 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Grotesk:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
-  <img src="./images/blueshift.jpeg" alt="" class="top-photo">
-
   <style>
-    /* ── Custom Font ─────────────────────────────────── */
-    /* Put your font file in a fonts/ folder next to index.html,
-       then change the filename and format below.
-       Common formats: .woff2 → 'woff2', .woff → 'woff', .ttf → 'truetype', .otf → 'opentype' */
-    @font-face {
-      font-family: 'corpix';
-      src: url('./fonts/CoraPixels-Regular.ttf') format('ttf');
-      font-weight: 400;
-      font-style: normal;
-    }
-
-    /* To use it, replace any font-family value with:
-       font-family: 'corpix', sans-serif;              */
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -42,7 +27,17 @@
       height: 100vh;
     }
 
-    /* ── Scattered title words ───────────────────────── */
+    /* ── top photo ─────── */
+    .top-photo {
+      position: absolute;
+      top: 2%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: auto;
+    }
+
+    /* ── title words ────── */
     .word {
       position: absolute;
       user-select: none;
@@ -78,8 +73,8 @@
       left: 18%;
       transform: rotate(-1deg);
       text-shadow:
-      0 0 50px rgba(255,255,255,0.4),
-      0 0 100px rgba(255,255,255,0.4)
+        0 0 50px rgba(255,255,255,0.4),
+        0 0 100px rgba(255,255,255,0.4);
     }
 
     .word.w-lamb {
@@ -91,11 +86,11 @@
       left: 55%;
       transform: rotate(2deg);
       text-shadow:
-      0 0 50px rgba(255,255,255,0.4),
-      0 0 100px rgba(255,255,255,0.4)
+        0 0 50px rgba(255,255,255,0.4),
+        0 0 100px rgba(255,255,255,0.4);
     }
 
-    /* ── Nav links (scattered, small, no outline) ──── */
+    /* ──  links ──── */
     .nav-word {
       position: absolute;
       font-family: 'Space Grotesk', sans-serif;
@@ -135,7 +130,7 @@
       transform: rotate(-1.5deg);
     }
 
-    /* ── Subtle ambient drift ────────────────────────── */
+    /* ── drift ───── */
     @keyframes drift {
       0%, 100% { transform: translate(0, 0); }
       50%      { transform: translate(var(--dx), var(--dy)); }
@@ -154,25 +149,60 @@
     .nav-visual { --dx: 3px;  --dy: -2px; --dur: 23s; }
     .nav-misc   { --dx: -3px; --dy: 2px;  --dur: 28s; }
 
-    /* ── Mobile adjustments ──────────────────────────── */
+    /* ── Mobile adjustments ─── */
     @media (max-width: 640px) {
-      .word.w-hello   { top: 10%; left: 6%; }
-      .word.w-im      { top: 24%; left: 42%; }
-      .word.w-morning { top: 36%; left: 5%; }
-      .word.w-lamb    { top: 54%; left: 30%; }
+      .top-photo {
+        width: 180px;
+        top: 1%;
+      }
 
-      .nav-sound  { top: 73%; right: auto; left: 10%; }
-      .nav-visual { bottom: auto; top: 78%; left: 60%; }
-      .nav-misc   { bottom: 10%; right: auto; left: 25%; }
+      .word.w-hello {
+        top: 18%;
+        left: 6%;
+        font-size: 2.2rem;
+      }
+
+      .word.w-im {
+        top: 28%;
+        left: 55%;
+        font-size: 1.2rem;
+      }
+
+      .word.w-morning {
+        top: 38%;
+        left: 5%;
+        font-size: 3rem;
+      }
+
+      .word.w-lamb {
+        top: 52%;
+        left: 35%;
+        font-size: 2.8rem;
+      }
+
+      .nav-word {
+        font-size: 0.75rem;
+      }
+
+      .nav-sound {
+        top: 66%;
+        right: auto;
+        left: 8%;
+      }
+
+      .nav-visual {
+        bottom: auto;
+        top: 74%;
+        left: 60%;
+      }
+
+      .nav-misc {
+        bottom: auto;
+        top: 82%;
+        right: auto;
+        left: 20%;
+      }
     }
-    .top-photo {
-  position: absolute;
-  top: 2%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: auto;
-}
   </style>
 </head>
 
@@ -180,13 +210,16 @@
 
   <div class="canvas">
 
-    <!-- Title words, scattered -->
+    <!-- Photo -->
+    <img src="./images/blueshift.jpeg" alt="" class="top-photo">
+
+    <!-- Title words -->
     <span class="word w-hello">hello,</span>
     <span class="word w-im">i'm</span>
     <span class="word w-morning">morning</span>
     <span class="word w-lamb">lamb</span>
 
-    <!-- Nav links, scattered and small -->
+    <!-- links -->
     <a href="sound.html" class="nav-word nav-sound">sound</a>
     <a href="visual.html" class="nav-word nav-visual">visual</a>
     <a href="misc.html" class="nav-word nav-misc">misc and more</a>
