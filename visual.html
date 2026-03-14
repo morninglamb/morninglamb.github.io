@@ -20,39 +20,28 @@
       cursor: default;
     }
 
-    /* ── scrollable canvas ─── */
-    .canvas {
+    /* ── Top area ──────────────────────────────────── */
+    .header {
       position: relative;
-      width: 100vw;
-      /* tall enough to scatter things and scroll through them.
-         increase this as you add more tracks */
-      min-height: 300vh;
-      padding-bottom: 10vh;
+      width: 100%;
+      padding: 3vh 6% 6vh;
     }
 
-    /* ── Top photo ─────────────────────────────────── */
     .top-photo {
-      position: absolute;
-      top: 1.5%;
-      left: 50%;
-      transform: translateX(-50%);
+      display: block;
+      margin: 0 auto 2rem;
       width: 300px;
       height: auto;
     }
 
-    /* ── Page title ────────────────────────────────── */
     .page-title {
-      position: absolute;
-      top: 5%;
-      left: 6%;
       font-weight: 200;
       font-size: clamp(2.5rem, 6vw, 5rem);
       color: #fff;
     }
 
-    /* ── Nav links (scattered, small) ──────────────── */
+    /* ── Nav ────────────────────────────────────────── */
     .nav-word {
-      position: absolute;
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 300;
       font-size: clamp(0.65rem, 1.1vw, 0.85rem);
@@ -72,54 +61,117 @@
       position: fixed;
       top: 4%;
       right: 5%;
+      z-index: 10;
     }
 
-    /* ── Subtle drift ──────────────────────────────── */
-    @keyframes drift {
-      0%, 100% { transform: translate(0, 0); }
-      50%      { transform: translate(var(--dx, 0), var(--dy, 0)); }
+    /* ── Gallery entries ───────────────────────────── */
+    .gallery {
+      padding: 0 6% 10vh;
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
     }
 
-    .page-title {
-      animation: drift 20s ease-in-out infinite;
-      --dx: 4px; --dy: 2px;
+    .entry {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+
+    .entry-media {
+      flex-shrink: 0;
+      width: min(55%, 560px);
+    }
+
+    .entry-media video,
+    .entry-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #111;
+    }
+
+    .entry-info {
+      font-weight: 300;
+      font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+      letter-spacing: 0.08em;
+      color: #555;
+      line-height: 1.7;
+      padding-top: 0.25rem;
+    }
+
+    .entry-info .entry-title {
+      color: #888;
+      margin-bottom: 0.35rem;
     }
 
     /* ── Mobile ────────────────────────────────────── */
     @media (max-width: 640px) {
-      .top-photo { width: 180px; top: 0.5%; }
+      .top-photo { width: 180px; }
 
-      .page-title {
-        top: 4%;
-        left: 5%;
-        font-size: 2.2rem;
+      .page-title { font-size: 2.2rem; }
+
+      .entry {
+        flex-direction: column;
+        gap: 0.75rem;
       }
+
+      .entry-media {
+        width: 100%;
+      }
+
+      .entry-info {
+        font-size: 0.75rem;
+      }
+
       .nav-home {
         top: auto;
         bottom: 3%;
         right: 5%;
-        position: fixed;
       }
 
       .nav-word { font-size: 0.75rem; }
-
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="canvas">
+  <!-- Back to home -->
+  <a href="index.html" class="nav-word nav-home">home</a>
 
-    <!-- Photo -->
+  <!-- Header -->
+  <div class="header">
     <img src="./images/lambnerve.jpg" alt="" class="top-photo">
-
-    <!-- Page title -->
     <span class="page-title">visual</span>
+  </div>
 
-    <!-- Back to home -->
-    <a href="index.html" class="nav-word nav-home">home</a>
+  <!-- Gallery -->
+  <div class="gallery">
 
+
+    <!-- Entry 1: video  -->
+    <div class="entry">
+      <div class="entry-media">
+        <video controls controlslist="nodownload" preload="metadata" src="./visualvideos/birds.mov"></video>
+      </div>
+      <div class="entry-info">
+        <div class="entry-title">the birds</div>
+        <div>touchdesigner</div>
+      </div>
     </div>
+
+    <!-- Entry 2: image  -->
+    <div class="entry">
+      <div class="entry-media">
+        <img src="./visualimages/heceta.jpg" alt="">
+      </div>
+      <div class="entry-info">
+        <div class="entry-title">heceta</div>
+        <div>through the viewfinder of an old camcorder</div>
+      </div>
+    </div>
+
 
   </div>
 
