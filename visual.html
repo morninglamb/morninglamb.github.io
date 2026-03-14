@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>morning lamb sounds</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      color: #e2e2e2;
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      cursor: default;
+    }
+
+    /* ── scrollable canvas ─── */
+    .canvas {
+      position: relative;
+      width: 100vw;
+      /* tall enough to scatter things and scroll through them.
+         increase this as you add more tracks */
+      min-height: 300vh;
+      padding-bottom: 10vh;
+    }
+
+    /* ── Top photo ─────────────────────────────────── */
+    .top-photo {
+      position: absolute;
+      top: 1.5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: auto;
+    }
+
+    /* ── Page title ────────────────────────────────── */
+    .page-title {
+      position: absolute;
+      top: 5%;
+      left: 6%;
+      font-weight: 200;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      color: #fff;
+    }
+
+    /* ── Nav links (scattered, small) ──────────────── */
+    .nav-word {
+      position: absolute;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+      letter-spacing: 0.08em;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.4s ease, text-shadow 0.4s ease;
+      white-space: nowrap;
+    }
+
+    .nav-word:hover {
+      color: #ccc;
+      text-shadow: 0 0 20px rgba(255,255,255,0.12);
+    }
+
+    .nav-home {
+      position: fixed;
+      top: 4%;
+      right: 5%;
+    }
+
+    /* ── Subtle drift ──────────────────────────────── */
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50%      { transform: translate(var(--dx, 0), var(--dy, 0)); }
+    }
+
+    .page-title {
+      animation: drift 20s ease-in-out infinite;
+      --dx: 4px; --dy: 2px;
+    }
+
+    /* ── Mobile ────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .top-photo { width: 180px; top: 0.5%; }
+
+      .page-title {
+        top: 4%;
+        left: 5%;
+        font-size: 2.2rem;
+      }
+      .nav-home {
+        top: auto;
+        bottom: 3%;
+        right: 5%;
+        position: fixed;
+      }
+
+      .nav-word { font-size: 0.75rem; }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="canvas">
+
+    <!-- Photo -->
+    <img src="./images/lambnerve.jpg" alt="" class="top-photo">
+
+    <!-- Page title -->
+    <span class="page-title">sound</span>
+
+    <!-- Back to home -->
+    <a href="index.html" class="nav-word nav-home">home</a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
