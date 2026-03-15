@@ -88,7 +88,6 @@
      top: 44%;
      left: 18%;
      transform: rotate(-1deg);
-     filter: url(#liquid);
    }
 
 
@@ -192,12 +191,32 @@
        font-size: 1.2rem;
      }
 
-
      .word.w-morning {
-       top: 38%;
-       left: 5%;
-       font-size: 3rem;
-     }
+          font-family: 'Space Grotesk', sans-serif;
+          font-weight: 100;
+          font-size: clamp(3.2rem, 8vw, 7.5rem);
+          color: #000000;
+          top: 44%;
+          left: 18%;
+          position: absolute;
+        }
+
+        .morning-top,
+        .morning-bottom {
+          display: block;
+          line-height: 1;
+        }
+
+        .morning-top {
+          clip-path: inset(0 0 50% 0);
+          transform: translateX(6px);
+        }
+
+        .morning-bottom {
+          clip-path: inset(50% 0 0 0);
+          margin-top: -1em;
+          transform: translateX(-6px);
+        }
 
 
      .word.w-lamb {
@@ -258,7 +277,10 @@
    <!-- Title words -->
    <span class="word w-hello">hello,</span>
    <span class="word w-im">i'm</span>
-   <span class="word w-morning">morning</span>
+   <span class="word w-morning" aria-hidden="true">
+      <span class="morning-top">morning</span>
+      <span class="morning-bottom">morning</span>
+   </span>
    <span class="word w-lamb">lamb</span>
 
 
