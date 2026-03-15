@@ -87,7 +87,24 @@
      color: #000000;
      top: 44%;
      left: 18%;
-     transform: rotate(-1deg);
+     position: absolute;
+   }
+
+   .morning-top,
+   .morning-bottom {
+     display: block;
+     line-height: 1;
+   }
+
+   .morning-top {
+     clip-path: inset(0 0 50% 0);
+     transform: translateX(6px);
+   }
+
+   .morning-bottom {
+     clip-path: inset(50% 0 0 0);
+     margin-top: -1em;
+     transform: translateX(-6px);
    }
 
 
@@ -191,32 +208,12 @@
        font-size: 1.2rem;
      }
 
+
      .word.w-morning {
-          font-family: 'Space Grotesk', sans-serif;
-          font-weight: 100;
-          font-size: clamp(3.2rem, 8vw, 7.5rem);
-          color: #000000;
-          top: 44%;
-          left: 18%;
-          position: absolute;
-        }
-
-        .morning-top,
-        .morning-bottom {
-          display: block;
-          line-height: 1;
-        }
-
-        .morning-top {
-          clip-path: inset(0 0 50% 0);
-          transform: translateX(6px);
-        }
-
-        .morning-bottom {
-          clip-path: inset(50% 0 0 0);
-          margin-top: -1em;
-          transform: translateX(-6px);
-        }
+       top: 38%;
+       left: 5%;
+       font-size: 3rem;
+     }
 
 
      .word.w-lamb {
@@ -258,12 +255,12 @@
 
 <body>
 
-    <svg style="position:absolute;width:0;height:0">
-      <filter id="liquid">
-        <feTurbulence type="turbulence" baseFrequency="0.005 0.02" numOctaves="1" seed="2" result="turb"/>
-        <feDisplacementMap in="SourceGraphic" in2="turb" scale="20" xChannelSelector="R" yChannelSelector="G"/>
-      </filter>
-    </svg>
+ <svg style="position:absolute;width:0;height:0">
+   <filter id="liquid">
+     <feTurbulence type="turbulence" baseFrequency="0.005 0.02" numOctaves="1" seed="2" result="turb"/>
+     <feDisplacementMap in="SourceGraphic" in2="turb" scale="20" xChannelSelector="R" yChannelSelector="G"/>
+   </filter>
+ </svg>
 
  <div class="canvas">
 
@@ -278,8 +275,8 @@
    <span class="word w-hello">hello,</span>
    <span class="word w-im">i'm</span>
    <span class="word w-morning" aria-hidden="true">
-      <span class="morning-top">morning</span>
-      <span class="morning-bottom">morning</span>
+     <span class="morning-top">morning</span>
+     <span class="morning-bottom">morning</span>
    </span>
    <span class="word w-lamb">lamb</span>
 
