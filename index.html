@@ -195,6 +195,7 @@
        top: 38%;
        left: 5%;
        font-size: 3rem;
+       filter: url(#liquid);
      }
 
 
@@ -237,6 +238,12 @@
 
 <body>
 
+    <svg style="position:absolute;width:0;height:0">
+      <filter id="liquid">
+        <feTurbulence type="turbulence" baseFrequency="0.02 0.06" numOctaves="2" seed="3" result="turb"/>
+        <feDisplacementMap in="SourceGraphic" in2="turb" scale="30" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </svg>
 
  <div class="canvas">
 
