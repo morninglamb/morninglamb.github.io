@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>morning lamb home</title>
+
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Grotesk:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+
+ <style>
+
+
+   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+   body {
+     background: #FFFFFF;
+     color: #FFFFFF;
+     min-height: 100vh;
+     overflow: hidden;
+     cursor: default;
+   }
+
+
+   .canvas {
+     position: relative;
+     width: 100vw;
+     height: 100vh;
+   }
+
+
+   /* ── top photo ─────── */
+   .top-photo {
+     position: absolute;
+     top: 2%;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 300px;
+     height: auto;
+   }
+
+
+   a img {
+         border: none;
+       }
+
+
+   /* ── title words ────── */
+   .word {
+     position: absolute;
+     user-select: none;
+     white-space: nowrap;
+   }
+
+
+   .word.w-hello {
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 200;
+     font-size: clamp(2.8rem, 6vw, 5.5rem);
+     color: #333;
+     top: 14%;
+     left: 8%;
+     transform: rotate(-3deg);
+     text-shadow: 0 0 40px rgba(255,255,255,0.06);
+   }
+
+
+   .word.w-im {
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 200;
+     font-size: clamp(1.4rem, 3vw, 2.4rem);
+     color: #333;
+     top: 32%;
+     left: 52%;
+     transform: rotate(1.5deg);
+   }
+
+
+   .word.w-morning {
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 100;
+     font-size: clamp(3.2rem, 8vw, 7.5rem);
+     color: #000000;
+     top: 44%;
+     left: 18%;
+     transform: rotate(-1deg);
+   }
+
+
+   .word.w-lamb {
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 100;
+     font-size: clamp(3rem, 7.5vw, 7rem);
+     color: #000000;
+     top: 62%;
+     left: 68%;
+     transform: rotate(2deg);
+   }
+
+
+   /* ──  links ──── */
+   .nav-word {
+     position: absolute;
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 300;
+     font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+     letter-spacing: 0.08em;
+     color: #888;
+     text-decoration: none;
+     background: none;
+     border: none;
+     cursor: pointer;
+     padding: 0.3rem 0.1rem;
+     transition: color 0.4s ease, text-shadow 0.4s ease;
+     white-space: nowrap;
+   }
+
+
+   .nav-word:hover {
+     color: #888;
+   }
+
+
+   .nav-sound {
+     top: 26%;
+     right: 12%;
+     transform: rotate(-2deg);
+   }
+
+
+   .nav-visual {
+     bottom: 22%;
+     left: 7%;
+     transform: rotate(3deg);
+   }
+
+
+   .nav-misc {
+     bottom: 12%;
+     right: 28%;
+     transform: rotate(-1.5deg);
+   }
+
+
+   /* ── drift ───── */
+   @keyframes drift {
+     0%, 100% { transform: translate(0, 0); }
+     50%      { transform: translate(var(--dx), var(--dy)); }
+   }
+
+
+   .word, .nav-word {
+     animation: drift var(--dur) ease-in-out infinite;
+   }
+
+
+   .w-hello   { --dx: 4px;  --dy: -3px; --dur: 18s; }
+   .w-im      { --dx: -3px; --dy: 5px;  --dur: 22s; }
+   .w-morning { --dx: 5px;  --dy: 2px;  --dur: 20s; }
+   .w-lamb    { --dx: -4px; --dy: -4px; --dur: 24s; }
+
+
+   .nav-sound  { --dx: -2px; --dy: 3px;  --dur: 26s; }
+   .nav-visual { --dx: 3px;  --dy: -2px; --dur: 23s; }
+   .nav-misc   { --dx: -3px; --dy: 2px;  --dur: 28s; }
+
+
+   /* ── Mobile adjustments ─── */
+   @media (max-width: 640px) {
+     .top-photo {
+       width: 180px;
+       top: 1%;
+     }
+
+
+     .word.w-hello {
+       top: 18%;
+       left: 6%;
+       font-size: 2.2rem;
+     }
+
+
+     .word.w-im {
+       top: 28%;
+       left: 55%;
+       font-size: 1.2rem;
+     }
+
+
+     .word.w-morning {
+       top: 38%;
+       left: 5%;
+       font-size: 3rem;
+     }
+
+
+     .word.w-lamb {
+       top: 52%;
+       left: 65%;
+       font-size: 2.8rem;
+     }
+
+
+     .nav-word {
+       font-size: 0.75rem;
+     }
+
+
+     .nav-sound {
+       top: 66%;
+       right: auto;
+       left: 8%;
+     }
+
+
+     .nav-visual {
+       bottom: auto;
+       top: 74%;
+       left: 60%;
+     }
+
+
+     .nav-misc {
+       bottom: auto;
+       top: 82%;
+       right: auto;
+       left: 20%;
+     }
+   }
+ </style>
+</head>
+
+
+<body>
+
+
+ <div class="canvas">
+
+
+   <!-- Photo -->
+   <a href="about.html">
+   <img src="./images/blueshift.jpeg" alt="" class="top-photo">
+   </a>
+
+
+
+
+   <!-- Title words -->
+   <span class="word w-hello">hello,</span>
+   <span class="word w-im">i'm</span>
+   <span class="word w-morning">morning</span>
+   <span class="word w-lamb">lamb</span>
+
+
+   <!-- links -->
+   <a href="sound.html" class="nav-word nav-sound">sound</a>
+   <a href="visual.html" class="nav-word nav-visual">visual</a>
+   <a href="misc.html" class="nav-word nav-misc">misc and more</a>
+
+
+ </div>
+
+
+</body>
+</html>
+
