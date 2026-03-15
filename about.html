@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>about morning lamb</title>
+
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Space+Grotesk:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+
+ <style>
+
+
+   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+   body {
+     background: #FFFFFF;
+     color: #FFFFFF;
+     min-height: 100vh;
+     overflow: hidden;
+     cursor: default;
+   }
+
+
+   .canvas {
+     position: relative;
+     width: 100vw;
+     height: 100vh;
+   }
+
+
+
+
+   .word {
+     position: absolute;
+     user-select: none;
+     white-space: nowrap;
+   }
+
+
+   .word.w-about {
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 200;
+     font-size: clamp(2.8rem, 6vw, 5.5rem);
+     color: #333;
+     top: 10%;
+     left: 50%;
+     transform: translateX(-50%);
+     text-align: center;
+   }
+
+
+   .nav-word {
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 300;
+     font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+     letter-spacing: 0.08em;
+     color: #555;
+     text-decoration: none;
+     transition: color 0.4s ease, text-shadow 0.4s ease;
+     white-space: nowrap;
+   }
+
+
+   .nav-word:hover {
+     color: #ccc;
+     text-shadow: 0 0 20px rgba(255,255,255,0.12);
+   }
+
+
+   .nav-home {
+     position: fixed;
+     top: 4%;
+     right: 5%;
+     z-index: 10;
+   }
+ </style>
+</head>
+
+
+<body>
+   <a href="index.html" class="nav-word nav-home">home</a>
+
+
+   <div class="canvas">
+        <span class="word w-about">about</span>
+
+
+   </div>
+</body>
+</html>
+

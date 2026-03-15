@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>morening lamb</title>
+
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+
+
+ <style>
+   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+   body {
+     background: #FFFFFF;
+     color: #000;
+     font-family: 'Space Grotesk', sans-serif;
+     min-height: 100vh;
+     overflow: hidden;
+     cursor: default;
+   }
+
+
+   .canvas {
+     position: relative;
+     width: 100vw;
+     height: 100vh;
+   }
+
+
+   .center-photo {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 180px;
+     height: auto;
+     z-index: 0;
+   }
+}
+
+
+
+
+   .phrase {
+     position: absolute;
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 300;
+     white-space: nowrap;
+     user-select: none;
+   }
+
+
+   /*
+     z-index layers:
+     1 = lightest (#eee-#f5f5f5)  — back
+     2 = light (#ccc-#ddd)
+     3 = mid (#888-#bbb)
+     4 = dark (#333-#666)
+     5 = darkest (#000-#222)       — front
+   */
+
+
+   /* layer 1: lightest, back */
+   .p1  { top: 1%;   left: 2%;   font-size: 9rem;    color: #eee;    z-index: 1; }
+   .p2  { top: 12%;  left: 55%;  font-size: 0.6rem;  color: #e0e0e0; z-index: 1; }
+   .p3  { top: 17%;  left: 8%;   font-size: 7rem;    color: #e8e8e8; z-index: 1; }
+   .p4  { top: 24%;  left: 62%;  font-size: 10rem;   color: #f0f0f0; z-index: 1; }
+   .p5  { top: 31%;  left: 20%;  font-size: 0.55rem; color: #eee;    z-index: 1; }
+   .p6  { top: 38%;  left: 30%;  font-size: 8rem;    color: #e5e5e5; z-index: 1; }
+   .p7  { top: 46%;  left: 1%;   font-size: 11rem;   color: #f2f2f2; z-index: 1; }
+   .p8  { top: 52%;  left: 70%;  font-size: 0.7rem;  color: #e8e8e8; z-index: 1; }
+   .p9  { top: 57%;  left: 12%;  font-size: 7.5rem;  color: #e0e0e0; z-index: 1; }
+   .p10 { top: 63%;  left: 32%;  font-size: 9.5rem;  color: #ebebeb; z-index: 1; }
+   .p11 { top: 70%;  left: 8%;   font-size: 0.5rem;  color: #eee;    z-index: 1; }
+   .p12 { top: 74%;  left: 75%;  font-size: 12rem;   color: #f5f5f5; z-index: 1; }
+   .p13 { top: 80%;  left: 5%;   font-size: 8.5rem;  color: #e2e2e2; z-index: 1; }
+   .p14 { top: 90%;  left: 2%;   font-size: 10.5rem; color: #efefef; z-index: 1; }
+   .p15 { top: 42%;  left: 82%;  font-size: 0.6rem;  color: #e5e5e5; z-index: 1; }
+
+
+   /* layer 2: light */
+   .p16 { top: 9%;   left: 50%;  font-size: 5rem;    color: #d0d0d0; z-index: 2; }
+   .p17 { top: 13%;  left: 68%;  font-size: 0.55rem; color: #ccc;    z-index: 2; }
+   .p18 { top: 25%;  left: 40%;  font-size: 0.6rem;  color: #d5d5d5; z-index: 2; }
+   .p19 { top: 31%;  left: 75%;  font-size: 3.5rem;  color: #ddd;    z-index: 2; }
+   .p20 { top: 44%;  left: 75%;  font-size: 4.5rem;  color: #ccc;    z-index: 2; }
+   .p21 { top: 52%;  left: 38%;  font-size: 5.5rem;  color: #ddd;    z-index: 2; }
+   .p22 { top: 60%;  left: 50%;  font-size: 0.5rem;  color: #d8d8d8; z-index: 2; }
+   .p23 { top: 70%;  left: 55%;  font-size: 6.5rem;  color: #d8d8d8; z-index: 2; }
+   .p24 { top: 78%;  left: 25%;  font-size: 0.55rem; color: #ccc;    z-index: 2; }
+   .p25 { top: 84%;  left: 80%;  font-size: 5rem;    color: #ccc;    z-index: 2; }
+   .p26 { top: 6%;   left: 85%;  font-size: 0.7rem;  color: #d0d0d0; z-index: 2; }
+   .p27 { top: 36%;  left: 48%;  font-size: 0.5rem;  color: #ddd;    z-index: 2; }
+   .p28 { top: 88%;  left: 42%;  font-size: 0.6rem;  color: #d5d5d5; z-index: 2; }
+
+
+   /* ── LAYER 3: mid ── */
+   .p29 { top: 36%;  left: 70%;  font-size: 3rem;    color: #999;    z-index: 3; }
+   .p30 { top: 28%;  left: 40%;  font-size: 0.65rem; color: #aaa;    z-index: 3; }
+   .p31 { top: 78%;  left: 25%;  font-size: 3.5rem;  color: #aaa;    z-index: 3; }
+   .p32 { top: 15%;  left: 40%;  font-size: 2.5rem;  color: #888;    z-index: 3; }
+   .p33 { top: 55%;  left: 85%;  font-size: 0.6rem;  color: #999;    z-index: 3; }
+   .p34 { top: 48%;  left: 18%;  font-size: 0.55rem; color: #aaa;    z-index: 3; }
+   .p35 { top: 67%;  left: 42%;  font-size: 0.7rem;  color: #888;    z-index: 3; }
+   .p36 { top: 92%;  left: 65%;  font-size: 0.5rem;  color: #999;    z-index: 3; }
+
+
+   /* ── LAYER 4: dark ── */
+   .p37 { top: 4%;   left: 78%;  font-size: 0.7rem;  color: #444;    z-index: 4; }
+   .p38 { top: 15%;  left: 35%;  font-size: 0.5rem;  color: #333;    z-index: 4; }
+   .p39 { top: 28%;  left: 40%;  font-size: 2.5rem;  color: #555;    z-index: 4; }
+   .p40 { top: 43%;  left: 48%;  font-size: 0.55rem; color: #333;    z-index: 4; }
+   .p41 { top: 56%;  left: 42%;  font-size: 0.6rem;  color: #444;    z-index: 4; }
+   .p42 { top: 66%;  left: 18%;  font-size: 0.55rem; color: #333;    z-index: 4; }
+   .p43 { top: 86%;  left: 15%;  font-size: 0.7rem;  color: #333;    z-index: 4; }
+   .p44 { top: 35%;  left: 5%;   font-size: 0.5rem;  color: #444;    z-index: 4; }
+   .p45 { top: 73%;  left: 88%;  font-size: 0.6rem;  color: #555;    z-index: 4; }
+
+
+   /* ── LAYER 5: darkest, front ── */
+   .p46 { top: 2%;   left: 60%;  font-size: 0.55rem; color: #000;    z-index: 5; }
+   .p47 { top: 5%;   left: 25%;  font-size: 2rem;    color: #000;    z-index: 5; }
+   .p48 { top: 11%;  left: 1%;   font-size: 1.1rem;  color: #000;    z-index: 5; }
+   .p49 { top: 18%;  left: 72%;  font-size: 1.4rem;  color: #000;    z-index: 5; }
+   .p50 { top: 21%;  left: 45%;  font-size: 0.65rem; color: #222;    z-index: 5; }
+   .p51 { top: 23%;  left: 15%;  font-size: 4rem;    color: #000;    z-index: 5; }
+   .p52 { top: 26%;  left: 2%;   font-size: 0.8rem;  color: #000;    z-index: 5; }
+   .p53 { top: 30%;  left: 80%;  font-size: 0.6rem;  color: #000;    z-index: 5; }
+   .p54 { top: 33%;  left: 55%;  font-size: 1.8rem;  color: #000;    z-index: 5; }
+   .p55 { top: 35%;  left: 5%;   font-size: 0.5rem;  color: #111;    z-index: 5; }
+   .p56 { top: 39%;  left: 85%;  font-size: 0.7rem;  color: #000;    z-index: 5; }
+   .p57 { top: 41%;  left: 10%;  font-size: 1.6rem;  color: #000;    z-index: 5; }
+   .p58 { top: 47%;  left: 58%;  font-size: 0.9rem;  color: #000;    z-index: 5; }
+   .p59 { top: 49%;  left: 22%;  font-size: 2.2rem;  color: #000;    z-index: 5; }
+   .p60 { top: 50%;  left: 82%;  font-size: 0.5rem;  color: #222;    z-index: 5; }
+   .p61 { top: 53%;  left: 6%;   font-size: 1.2rem;  color: #000;    z-index: 5; }
+   .p62 { top: 55%;  left: 65%;  font-size: 3.2rem;  color: #000;    z-index: 5; }
+   .p63 { top: 59%;  left: 78%;  font-size: 0.75rem; color: #000;    z-index: 5; }
+   .p64 { top: 60%;  left: 50%;  font-size: 2.8rem;  color: #000;    z-index: 5; }
+   .p65 { top: 62%;  left: 3%;   font-size: 0.5rem;  color: #111;    z-index: 5; }
+   .p66 { top: 64%;  left: 72%;  font-size: 1.5rem;  color: #000;    z-index: 5; }
+   .p67 { top: 67%;  left: 55%;  font-size: 4rem;    color: #000;    z-index: 5; }
+   .p68 { top: 68%;  left: 88%;  font-size: 0.7rem;  color: #000;    z-index: 5; }
+   .p69 { top: 71%;  left: 62%;  font-size: 0.5rem;  color: #222;    z-index: 5; }
+   .p70 { top: 72%;  left: 40%;  font-size: 2rem;    color: #000;    z-index: 5; }
+   .p71 { top: 75%;  left: 2%;   font-size: 1rem;    color: #000;    z-index: 5; }
+   .p72 { top: 76%;  left: 48%;  font-size: 0.6rem;  color: #000;    z-index: 5; }
+   .p73 { top: 82%;  left: 58%;  font-size: 1.8rem;  color: #000;    z-index: 5; }
+   .p74 { top: 87%;  left: 45%;  font-size: 3rem;    color: #000;    z-index: 5; }
+   .p75 { top: 92%;  left: 52%;  font-size: 1.3rem;  color: #000;    z-index: 5; }
+
+
+   /* ── Nav ──────────── */
+   .nav-word {
+     position: fixed;
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 300;
+     font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+     letter-spacing: 0.08em;
+     color: #555;
+     text-decoration: none;
+     transition: color 0.4s ease;
+     white-space: nowrap;
+     z-index: 100;
+   }
+
+
+   .nav-word:hover {
+     color: #000;
+   }
+
+
+   .nav-home {
+     top: 4%;
+     right: 5%;
+   }
+
+
+   /* ── Mobile ───────── */
+   @media (max-width: 640px) {
+     .top-photo { width: 90px; }
+
+
+     .p1  { font-size: 4rem; }
+     .p3  { font-size: 3.5rem; }
+     .p4  { font-size: 5rem; }
+     .p6  { font-size: 4rem; }
+     .p7  { font-size: 5rem; }
+     .p9  { font-size: 3.5rem; }
+     .p10 { font-size: 4.5rem; }
+     .p12 { font-size: 5.5rem; }
+     .p13 { font-size: 4rem; }
+     .p14 { font-size: 5rem; }
+
+
+     .nav-home {
+       top: auto;
+       bottom: 3%;
+       right: 5%;
+     }
+
+
+     .nav-word { font-size: 0.75rem; }
+   }
+ </style>
+</head>
+
+
+<body>
+
+
+ <a href="index.html" class="nav-word nav-home">home</a>
+
+
+ <div class="canvas">
+   <img src="./images/lambhole.jpg" alt="" class="center-photo">
+   <!-- Layer 1: lightest (back) -->
+   <span class="phrase p1">i'm morning lamb</span>
+   <span class="phrase p2">i'm morning lamb</span>
+   <span class="phrase p3">i'm morning lamb</span>
+   <span class="phrase p4">i'm morning lamb</span>
+   <span class="phrase p5">i'm morning lamb</span>
+   <span class="phrase p6">i'm morning lamb</span>
+   <span class="phrase p7">i'm morning lamb</span>
+   <span class="phrase p8">i'm morning lamb</span>
+   <span class="phrase p9">i'm morning lamb</span>
+   <span class="phrase p10">i'm morning lamb</span>
+   <span class="phrase p11">i'm morning lamb</span>
+   <span class="phrase p12">i'm morning lamb</span>
+   <span class="phrase p13">i'm morning lamb</span>
+   <span class="phrase p14">i'm morning lamb</span>
+   <span class="phrase p15">i'm morning lamb</span>
+
+
+   <!-- Layer 2: light -->
+   <span class="phrase p16">i'm morning lamb</span>
+   <span class="phrase p17">i'm morning lamb</span>
+   <span class="phrase p18">i'm morning lamb</span>
+   <span class="phrase p19">i'm morning lamb</span>
+   <span class="phrase p20">i'm morning lamb</span>
+   <span class="phrase p21">i'm morning lamb</span>
+   <span class="phrase p22">i'm morning lamb</span>
+   <span class="phrase p23">i'm morning lamb</span>
+   <span class="phrase p24">i'm morning lamb</span>
+   <span class="phrase p25">i'm morning lamb</span>
+   <span class="phrase p26">i'm morning lamb</span>
+   <span class="phrase p27">i'm morning lamb</span>
+   <span class="phrase p28">i'm morning lamb</span>
+
+
+   <!-- Layer 3: mid -->
+   <span class="phrase p29">i'm morning lamb</span>
+   <span class="phrase p30">i'm morning lamb</span>
+   <span class="phrase p31">i'm morning lamb</span>
+   <span class="phrase p32">i'm morning lamb</span>
+   <span class="phrase p33">i'm morning lamb</span>
+   <span class="phrase p34">i'm morning lamb</span>
+   <span class="phrase p35">i'm morning lamb</span>
+   <span class="phrase p36">i'm morning lamb</span>
+
+
+   <!-- Layer 4: dark -->
+   <span class="phrase p37">i'm morning lamb</span>
+   <span class="phrase p38">i'm morning lamb</span>
+   <span class="phrase p39">i'm morning lamb</span>
+   <span class="phrase p40">i'm morning lamb</span>
+   <span class="phrase p41">i'm morning lamb</span>
+   <span class="phrase p42">i'm morning lamb</span>
+   <span class="phrase p43">i'm morning lamb</span>
+   <span class="phrase p44">i'm morning lamb</span>
+   <span class="phrase p45">i'm morning lamb</span>
+
+
+   <!-- Layer 5: darkest (front) -->
+   <span class="phrase p46">i'm morning lamb</span>
+   <span class="phrase p47">i'm morning lamb</span>
+   <span class="phrase p48">i'm morning lamb</span>
+   <span class="phrase p49">i'm morning lamb</span>
+   <span class="phrase p50">i'm morning lamb</span>
+   <span class="phrase p51">i'm morning lamb</span>
+   <span class="phrase p52">i'm morning lamb</span>
+   <span class="phrase p53">i'm morning lamb</span>
+   <span class="phrase p54">i'm morning lamb</span>
+   <span class="phrase p55">i'm morning lamb</span>
+   <span class="phrase p56">i'm morning lamb</span>
+   <span class="phrase p57">i'm morning lamb</span>
+   <span class="phrase p58">i'm morning lamb</span>
+   <span class="phrase p59">i'm morning lamb</span>
+   <span class="phrase p60">i'm morning lamb</span>
+   <span class="phrase p61">i'm morning lamb</span>
+   <span class="phrase p62">i'm morning lamb</span>
+   <span class="phrase p63">i'm morning lamb</span>
+   <span class="phrase p64">i'm morning lamb</span>
+   <span class="phrase p65">i'm morning lamb</span>
+   <span class="phrase p66">i'm morning lamb</span>
+   <span class="phrase p67">i'm morning lamb</span>
+   <span class="phrase p68">i'm morning lamb</span>
+   <span class="phrase p69">i'm morning lamb</span>
+   <span class="phrase p70">i'm morning lamb</span>
+   <span class="phrase p71">i'm morning lamb</span>
+   <span class="phrase p72">i'm morning lamb</span>
+   <span class="phrase p73">i'm morning lamb</span>
+   <span class="phrase p74">i'm morning lamb</span>
+   <span class="phrase p75">i'm morning lamb</span>
+
+
+ </div>
+
+
+</body>
+</html>
+

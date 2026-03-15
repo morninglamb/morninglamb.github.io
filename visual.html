@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>morning lamb visual</title>
+
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet">
+
+
+ <style>
+   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+
+   body {
+     background: #FFF;
+     color: #FFF;
+     font-family: 'Space Grotesk', sans-serif;
+     min-height: 100vh;
+     cursor: default;
+   }
+
+
+   /* ── Top area ──────────────────────────────────── */
+   .header {
+     position: relative;
+     width: 100%;
+     padding: 3vh 6% 6vh;
+   }
+
+
+   .top-photo {
+     display: block;
+     margin: 0 auto 2rem;
+     width: 300px;
+     height: auto;
+   }
+
+
+   .page-title {
+     position: absolute;
+     top: 15vh;
+     left: 6%;
+     font-weight: 200;
+     font-size: clamp(2.5rem, 6vw, 5rem);
+     color: #000;
+   }
+
+
+   /* ── Nav ────────────────────────────────────────── */
+   .nav-word {
+     font-family: 'Space Grotesk', sans-serif;
+     font-weight: 300;
+     font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+     letter-spacing: 0.08em;
+     color: #555;
+     text-decoration: none;
+     transition: color 0.4s ease, text-shadow 0.4s ease;
+     white-space: nowrap;
+   }
+
+
+   .nav-word:hover {
+     color: #ccc;
+     text-shadow: 0 0 20px rgba(255,255,255,0.12);
+   }
+
+
+   .nav-home {
+     position: fixed;
+     top: 4%;
+     right: 5%;
+     z-index: 10;
+   }
+
+
+   /* ── Gallery entries ───────────────────────────── */
+   .gallery {
+     padding: 0 6% 10vh;
+     display: flex;
+     flex-direction: column;
+     gap: 5rem;
+   }
+
+
+   .entry {
+     display: flex;
+     align-items: flex-start;
+     gap: 2rem;
+   }
+
+
+   .entry-media {
+     flex-shrink: 0;
+     width: min(55%, 560px);
+   }
+
+
+   .entry-media video,
+   .entry-media img {
+     width: 100%;
+     height: auto;
+     display: block;
+     background: #111;
+   }
+
+
+   .entry-info {
+     font-weight: 300;
+     font-size: clamp(0.65rem, 1.1vw, 0.85rem);
+     letter-spacing: 0.08em;
+     color: #888;
+     line-height: 1.7;
+     padding-top: 0.25rem;
+   }
+
+
+   .entry-info .entry-title {
+     color: #555;
+     margin-bottom: 0.35rem;
+   }
+
+
+   /* ── Mobile ────────────────────────────────────── */
+   @media (max-width: 640px) {
+
+
+     .header {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+     }
+
+
+     .top-photo { width: 180px; }
+
+
+     .page-title {
+       position: relative;
+       top: auto;
+       left: auto;
+       font-size: 2.2rem;
+       text-align: center;
+     }
+
+
+     .entry {
+       flex-direction: column;
+       gap: 0.75rem;
+     }
+
+
+     .entry-media {
+       width: 100%;
+     }
+
+
+     .entry-info {
+       font-size: 0.75rem;
+     }
+
+
+     .nav-home {
+       top: auto;
+       bottom: 3%;
+       right: 5%;
+     }
+
+
+     .nav-word { font-size: 0.75rem; }
+   }
+ </style>
+</head>
+
+
+<body>
+
+
+ <!-- Back to home -->
+ <a href="index.html" class="nav-word nav-home">home</a>
+
+
+ <!-- Header -->
+ <div class="header">
+   <img src="./images/lambnerve.jpg" alt="" class="top-photo">
+   <span class="page-title">visual</span>
+ </div>
+
+
+ <!-- Gallery -->
+ <div class="gallery">
+
+
+
+
+   <!-- Entry 1: video  -->
+   <div class="entry">
+     <div class="entry-media">
+       <video controls controlslist="nodownload" preload="metadata" src="./visualvideos/birds.mov"></video>
+     </div>
+     <div class="entry-info">
+       <div class="entry-title">the birds</div>
+       <div>some birds i saw in touchdesigner</div>
+     </div>
+   </div>
+
+
+   <!-- Entry 2: image  -->
+   <div class="entry">
+     <div class="entry-media">
+       <img src="./visualimages/heceta.jpg" alt="">
+     </div>
+     <div class="entry-info">
+       <div class="entry-title">heceta</div>
+       <div>through the viewfinder of a sony Hi8 handycam</div>
+     </div>
+   </div>
+
+
+   <div class="entry">
+     <div class="entry-media">
+       <video controls controlslist="nodownload" preload="metadata" src="./visualvideos/hilyardbyday.mp4"></video>
+     </div>
+     <div class="entry-info">
+       <div class="entry-title">hilyard by day</div>
+       <div>my walk home in touchdesigner</div>
+     </div>
+   </div>
+
+
+
+
+ </div>
+
+
+</body>
+</html>
+
