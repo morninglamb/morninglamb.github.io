@@ -90,23 +90,6 @@
      position: absolute;
    }
 
-   .morning-top,
-   .morning-bottom {
-     display: block;
-     line-height: 1;
-   }
-
-   .morning-top {
-     clip-path: inset(0 0 50% 0);
-     transform: translateX(3px);
-   }
-
-   .morning-bottom {
-     clip-path: inset(50% 0 0 0);
-     margin-top: -1em;
-     transform: translateX(-6px);
-   }
-
 
    .word.w-lamb {
      font-family: 'Space Grotesk', sans-serif;
@@ -116,6 +99,23 @@
      top: 62%;
      left: 68%;
      transform: rotate(2deg);
+   }
+
+   .lamb-top,
+   .lamb-bottom {
+     display: block;
+     line-height: 1;
+   }
+
+   .lamb-top {
+     clip-path: inset(0 0 50% 0);
+     transform: translateX(3px);
+   }
+
+   .lamb-bottom {
+     clip-path: inset(50% 0 0 0);
+     margin-top: -1em;
+     transform: translateX(-3px);
    }
 
 
@@ -273,11 +273,11 @@
    <!-- Title words -->
    <span class="word w-hello">hello,</span>
    <span class="word w-im">i'm</span>
-   <span class="word w-morning" aria-hidden="true">
-     <span class="morning-top">morning</span>
-     <span class="morning-bottom">morning</span>
-   </span>
+   <span class="word w-morning">morning</span>
    <span class="word w-lamb">lamb</span>
+     <span class="lamb-top">lamb</span>
+     <span class="lamb-bottom">lamb</span>
+   </span>
 
 
    <!-- links -->
